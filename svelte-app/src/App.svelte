@@ -1,9 +1,10 @@
 <script>
-	import ComponentTree from './ComponentTree.svelte'
+	//import ComponentTree from './ComponentTree.svelte'
+	import Component from './Component.svelte'
 </script>
 
 <main>
-	<ComponentTree/>
+	<Component/>
 </main>
 
 <style>

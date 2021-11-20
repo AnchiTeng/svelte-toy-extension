@@ -252,6 +252,21 @@
       
     }
     console.log('check btn',childBtn)
+
+    var coll = document.getElementsByClassName("collapsible");
+var i;
+
+for (i = 0; i < coll.length; i++) {
+  coll[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var content = this.nextElementSibling;
+    if (content.style.display === "block") {
+      content.style.display = "none";
+    } else {
+      content.style.display = "block";
+    }
+  });
+}
  
 </script>
 
@@ -305,16 +320,20 @@
 <div>
     <ul>
         {#each astArray as ast}
-            <li>{ast.name} && parent >> {ast.parent} </li>
+            <li> {ast.parent} </li>
             <ul>
                 {#if ast.astData.children.length}
                 <!-- assign children to parent in treeObj -->
-                <li>Children test {treeObjs[ast.parent]=[...ast.astData.children]}</li>
-                <ul>
+                <button class="collapsible">Children {treeObjs[ast.parent]=[...ast.astData.children]}</button>
+                <div class="content">
+                <!-- <ul> -->
                     {#each ast.astData.children as child}
-                        <li>{child}</li>
+                     
+                    <p>{child}</p>
+                   
                     {/each}
-                </ul>
+                <!-- </ul> -->
+                </div>
                 {/if}
             </ul>
             <ul>
@@ -378,3 +397,27 @@
 
 
 
+<style>
+    .collapsible {
+      background-color: #777;
+      color: white;
+      cursor: pointer;
+      padding: 18px;
+      width: 100%;
+      border: none;
+      text-align: left;
+      outline: none;
+      font-size: 15px;
+    }
+    
+    .active, .collapsible:hover {
+      background-color: #555;
+    }
+    
+    .content {
+      padding: 0 18px;
+      display: none;
+      overflow: hidden;
+      background-color: #f1f1f1;
+    }
+    </style>

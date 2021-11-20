@@ -152,33 +152,11 @@
     console.log('treeObjs',treeObjs)
     return treeObjs
     }
+    
 
- let el1;
-    onMount(() => {
-		d3.select(el1)
-			.selectAll("div")
-			.data(data)
-			.enter()
-			.append("div")
-			.style("color", function(d) {
-				return 'red';
-			})
-			.text(function(d) {
-				return d;
-			});
-	});
+ 
 
-    let el2;
-	onMount(() => {
-		d3.select(el2)
-			.selectAll("div")
-			.data(data)
-			.enter()
-			.append("div")
-            .text(function(d) {
-				return d;
-			});
-	});
+    
 
 
     let count = 1;
@@ -217,8 +195,52 @@
       
     }
     console.log('check btn',childBtn)
+
+    let coll = document.getElementsByClassName("collapsible");
+
+
+for (let i = 0; i < coll.length; i++) {
+  coll[i].addEventListener("click", function() {
+    // this.classList.toggle("active");
+    let content = this.nextElementSibling;
+    if (content.style.display === "block") {
+      content.style.display = "none";
+    } else {
+      content.style.display = "block";
+    }
+  });
+}
+ 
+
  
 </script>
+
+<style>
+    .collapsible {
+      background-color: #777;
+      color: white;
+      cursor: pointer;
+      padding: 18px;
+      width: 100%;
+      border: none;
+      text-align: left;
+      outline: none;
+      font-size: 15px;
+    }
+    
+   
+    
+    .content {
+      padding: 0 18px;
+      display: none;
+      overflow: hidden;
+      background-color: #f1f1f1;
+    }
+
+    .test{
+        color:green;
+    }
+    </style>
 
 <!-- <style>
 	.chart div {
@@ -232,7 +254,7 @@
 </style> -->
    
    
-    
+  <main>
     <!-- <p>see d3 effect next line</p>
     <div class="chart">
         {#each data as d}
@@ -242,8 +264,8 @@
         {/each}
     </div>
     <div bind:this={el1} class="chart"></div>
-    <div bind:this={el2} class="chart"></div>
-     -->
+    <div bind:this={el2} class="chart"></div> -->
+    
     <!-- <div>
         <p>Here is testing children1 {data}</p>
         <button>{singleData}</button>
@@ -274,7 +296,11 @@
             <ul>
                 {#if ast.astData.children.length}
                 <!-- assign children to parent in treeObj -->
-                <li>Children test {treeObjs[ast.parent]=[...ast.astData.children]}</li>
+                <!-- <li>Children test  </li> -->
+                <button type="button" class="collapsible">Children</button>
+                <div class="content">{treeObjs[ast.parent]=[...ast.astData.children]}</div>
+                <!-- <p style="none"> {treeObjs[ast.parent]=[...ast.astData.children]}</p>  -->
+                 
                 <ul>
                     {#each ast.astData.children as child}
                         <li>{child}</li>
@@ -332,7 +358,7 @@
 <div>
     
     <button id={tree.top} on:click={getChildren}>{tree.top}</button>
-    <p>using point to App directly</p>
+    <p class= 'test' >using point to App directly</p>
     <button id='App' on:click={getChildren}>App</button>
    
     
@@ -340,6 +366,12 @@
   
    
 </div>
+<button type="button" class="collapsible">Open Collapsible</button>
+<div class="content">
+  <p>Lorem ipsum...</p>
+</div>
+
+</main>
 
 
 
