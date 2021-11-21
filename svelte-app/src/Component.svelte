@@ -132,6 +132,8 @@
                 reactives
         }
 
+        console.log('astData',astData)
+
         return astData
     }
     
@@ -196,49 +198,58 @@
     }
     console.log('check btn',childBtn)
 
-    let coll = document.getElementsByClassName("collapsible");
+    //test collasible
+let coll = document.getElementsByClassName("collapsible");
+let i;
 
-
-for (let i = 0; i < coll.length; i++) {
+function collapsible(){
+    let boo=0;
+let soo=0
+for (i = 0; i < coll.length; i++) {
   coll[i].addEventListener("click", function() {
     // this.classList.toggle("active");
     let content = this.nextElementSibling;
     if (content.style.display === "block") {
-      content.style.display = "none";
+        boo+=1;
+     content.style.display = "none";
     } else {
+        soo++
       content.style.display = "block";
     }
   });
 }
- 
+console.log('times-b-s',boo,soo);
 
+}
+ 
  
 </script>
 
 <style>
-    .collapsible {
-      background-color: #777;
-      color: white;
-      cursor: pointer;
-      padding: 18px;
-      width: 100%;
-      border: none;
-      text-align: left;
-      outline: none;
-      font-size: 15px;
-    }
-    
-   
-    
-    .content {
-      padding: 0 18px;
-      display: none;
-      overflow: hidden;
-      background-color: #f1f1f1;
-    }
+   .collapsible {
+  background-color: #777;
+  color: white;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+}
 
+/* .active, .collapsible:hover {
+  background-color: #555;
+} */
+
+.content {
+  padding: 0 18px;
+  display: none;
+  overflow: hidden;
+  background-color: #f1f1f1;
+}
     .test{
-        color:green;
+        color:rgb(19, 0, 128);
     }
     </style>
 
@@ -295,13 +306,14 @@ for (let i = 0; i < coll.length; i++) {
             <li>{ast.name} && parent >> {ast.parent} </li>
             <ul>
                 {#if ast.astData.children.length}
-                <!-- assign children to parent in treeObj -->
+               
                 <!-- <li>Children test  </li> -->
-                <button type="button" class="collapsible">Children</button>
-                <div class="content">{treeObjs[ast.parent]=[...ast.astData.children]}</div>
-                <!-- <p style="none"> {treeObjs[ast.parent]=[...ast.astData.children]}</p>  -->
+                <button type="button" class="collapsible" on:click={collapsible}>Children</button>
+                <!-- <div class="content">{treeObjs[ast.parent]=[...ast.astData.children]}</div> -->
+                 <!-- assign children to parent in treeObj and make this <p> dispaly hidden-->
+                <p style="display:none;"> {treeObjs[ast.parent]=[...ast.astData.children]}</p> 
                  
-                <ul>
+                <ul class='content'>
                     {#each ast.astData.children as child}
                         <li>{child}</li>
                     {/each}
@@ -310,8 +322,9 @@ for (let i = 0; i < coll.length; i++) {
             </ul>
             <ul>
                 {#if ast.astData.state.length}
-                <li>State Variables 3</li>
-                <ul>
+                <!-- <li>State Variables 3</li> -->
+                <button type="button" class="collapsible" on:click={collapsible}>State Variables</button>
+                <ul class='content'>
                     {#each ast.astData.state as element}
                         <li>{element}</li>
                     {/each}
@@ -320,8 +333,9 @@ for (let i = 0; i < coll.length; i++) {
             </ul>
             <ul>
                 {#if ast.astData.store.length}
-                <li>Store Variables</li>
-                <ul>
+                <!-- <li>Store Variables</li> -->
+                <button type="button" class="collapsible" on:click={collapsible}>Store Variables</button>
+                <ul class='content'>
                     {#each ast.astData.store as element}
                         <li>{element}</li>
                     {/each}
@@ -330,8 +344,9 @@ for (let i = 0; i < coll.length; i++) {
             </ul>
             <ul>
                 {#if ast.astData.props.length}
-                <li>Props</li>
-                <ul>
+                <!-- <li>Props</li> -->
+                <button type="button" class="collapsible" on:click={collapsible}>Props</button>
+                <ul class='content'>
                     {#each ast.astData.props as prop}
                         <li>{prop}</li>
                     {/each}
@@ -339,8 +354,9 @@ for (let i = 0; i < coll.length; i++) {
                 {/if}
             </ul> <ul>
                 {#if ast.astData.reactives.length}
-                <li>Reactive Variables</li>
-                <ul>
+                <!-- <li>Reactive Variables</li> -->
+                <button type="button" class="collapsible" on:click={collapsible}>Reactive Variables</button>
+                <ul class='content'>
                     {#each ast.astData.reactives as element}
                         <li>{element}</li>
                     {/each}
@@ -366,9 +382,26 @@ for (let i = 0; i < coll.length; i++) {
   
    
 </div>
-<button type="button" class="collapsible">Open Collapsible</button>
+<h2>Collapsibles</h2>
+
+<p>A Collapsible:</p>
+<button type="button" class="collapsible" on:click={collapsible}>Open Collapsible</button>
 <div class="content">
-  <p>Lorem ipsum...</p>
+  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+</div>
+
+<p>Collapsible Set:</p>
+<button type="button" class="collapsible">Open Section 1</button>
+<div class="content">
+  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+</div>
+<button type="button" class="collapsible">Open Section 2</button>
+<div class="content">
+  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+</div>
+<button type="button" class="collapsible">Open Section 3</button>
+<div class="content">
+  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
 </div>
 
 </main>

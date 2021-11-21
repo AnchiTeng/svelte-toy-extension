@@ -410,9 +410,9 @@ for (i = 0; i < coll.length; i++) {
       font-size: 15px;
     }
     
-    .active, .collapsible:hover {
+    /* .active, .collapsible:hover {
       background-color: #555;
-    }
+    } */
     
     .content {
       padding: 0 18px;
