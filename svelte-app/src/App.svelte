@@ -1,10 +1,10 @@
 <script>
-	//import ComponentTree from './ComponentTree.svelte'
-	import Component from './Component.svelte'
+	import ComponentTree from './ComponentTree.svelte';
+	//import Component from './Component.svelte';
 </script>
 
 <main>
-	<Component/>
+	<ComponentTree/>
 </main>
 
 <style>

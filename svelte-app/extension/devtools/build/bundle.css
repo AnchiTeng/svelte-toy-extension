@@ -2,6 +2,7 @@ html, body {
 	position: relative;
 	width: 100%;
 	height: 100%;
+	background-color:black;
 }
 
 body {
@@ -64,5 +65,5 @@ button:focus {
 
 
 
-.collapsible.svelte-1reanmj{background-color:#777;color:white;cursor:pointer;padding:18px;width:100%;border:none;text-align:left;outline:none;font-size:15px}.content.svelte-1reanmj{padding:0 18px;display:none;overflow:hidden;background-color:#f1f1f1}.test.svelte-1reanmj{color:rgb(19, 0, 128)}
+.parent.svelte-17iznaq{background-color:#777;color:white;cursor:pointer;padding:18px;width:40%;border:none;text-align:center;outline:none;font-size:15px}.collapsible.svelte-17iznaq{background-color:rgb(64, 140, 240);color:white;cursor:pointer;padding:12px;width:40%;border:none;text-align:left;outline:4px;font-size:15px}.content.svelte-17iznaq{padding:0 18px;display:none;overflow:hidden;background-color:#f1f1f1}
 main.svelte-1h6otfa{text-align:center;padding:1em;max-width:240px;margin:0 auto}@media(min-width: 640px){main.svelte-1h6otfa{max-width:none}}
